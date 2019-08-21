@@ -4,19 +4,20 @@
     <string name="request_prompt">Select a Request</string>
 
     <string-array name="select_array">
-    <item>Account Login</item>
-    <item>Account Logout</item>
-    <item>Account Creation</item>
-    <item>Account Update</item>
-    <item>Account Deletion</item>
-    <item>Event Creation</item>
-    <item>Event Update</item>
-    <item>Event Deletion</item>
-    <item>Transfer Creation</item>
-    <item>Transfer Update</item>
-    <item>Sale Creation</item>
-    <item>Sale Update</item>
-    <item>Password Recovery</item>
-    <item>Password Reset</item></string-array>
+        <item>Account Login</item>
+        <item>Account Logout</item>
+        <item>Account Creation</item>
+        <item>Account Update</item>
+        <item>Account Deletion</item>
+        <item>Event Creation</item>
+        <item>Event Update</item>
+        <item>Event Deletion</item>
+        <item>Transfer Creation</item>
+        <item>Transfer Update</item>
+        <item>Sale Creation</item>
+        <item>Sale Update</item>
+        <item>Password Recovery</item>
+        <item>Password Reset</item>
+    </string-array>
 
 </resources>
