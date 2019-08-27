@@ -32,7 +32,7 @@ class SecondActivity : AppCompatActivity() {
         "Sale Update",
         "Password Recovery",
         "Password Reset",
-        "Screenview Track"
+        "Pageview Track"
     )
 
     private var requestCode: Int = 12345
@@ -87,8 +87,6 @@ class SecondActivity : AppCompatActivity() {
         arrayAdpt.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
         this.spinner.adapter = arrayAdpt
 
-        Inspetor.sharedInstance().setContext(this)
-
         this.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
@@ -140,7 +138,7 @@ class SecondActivity : AppCompatActivity() {
                             Inspetor.sharedInstance().trackPasswordReset("email@email")
                         }
                         "Screenview Track" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackScreenView("Screen Track")
+                            Inspetor.sharedInstance().trackPageView("Page Track")
                         }
                     }
                 }
@@ -195,7 +193,7 @@ class SecondActivity : AppCompatActivity() {
                             Inspetor.sharedInstance().trackPasswordReset("email@email")
                         }
                         "Screenview Track" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackScreenView("Screen Track")
+                            Inspetor.sharedInstance().trackPageView("Page Track")
                         }
                     }
                 }
