@@ -33,6 +33,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'com.github.inspetor:inspetor:1.4.0-beta@aar', isTransitive
+    implementation 'com.github.inspetor:inspetor:1.4.1-beta@aar', isTransitive
 
 }
