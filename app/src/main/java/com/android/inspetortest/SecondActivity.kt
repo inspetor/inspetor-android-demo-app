@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.OnLifecycleEvent
 import com.inspetor.Inspetor
+import android.util.Log
 
 class SecondActivity : AppCompatActivity() {
 
@@ -44,12 +45,12 @@ class SecondActivity : AppCompatActivity() {
         when (requestCode) {
             12345 -> if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             } else {
-                ActivityCompat.requestPermissions(
-                    this, arrayOf<String>(
-                        Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.ACCESS_COARSE_LOCATION
-                    ), requestCode
-                )
+//                ActivityCompat.requestPermissions(
+//                    this, arrayOf<String>(
+//                        Manifest.permission.ACCESS_FINE_LOCATION,
+//                        Manifest.permission.ACCESS_COARSE_LOCATION
+//                    ), requestCode
+//                )
             }
             else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
@@ -74,7 +75,7 @@ class SecondActivity : AppCompatActivity() {
                     ), requestCode
                 )
             } else {
-
+                Log.d("INSPETOR", "ESTOU AQUI")
             }
         }
     }
@@ -137,7 +138,7 @@ class SecondActivity : AppCompatActivity() {
                         "Password Reset" -> if (Inspetor.sharedInstance().isConfigured()) {
                             Inspetor.sharedInstance().trackPasswordReset("email@email")
                         }
-                        "Screenview Track" -> if (Inspetor.sharedInstance().isConfigured()) {
+                        "Pageview Track" -> if (Inspetor.sharedInstance().isConfigured()) {
                             Inspetor.sharedInstance().trackPageView("Page Track")
                         }
                     }
@@ -192,7 +193,7 @@ class SecondActivity : AppCompatActivity() {
                         "Password Reset" -> if (Inspetor.sharedInstance().isConfigured()) {
                             Inspetor.sharedInstance().trackPasswordReset("email@email")
                         }
-                        "Screenview Track" -> if (Inspetor.sharedInstance().isConfigured()) {
+                        "Pageview Track" -> if (Inspetor.sharedInstance().isConfigured()) {
                             Inspetor.sharedInstance().trackPageView("Page Track")
                         }
                     }
