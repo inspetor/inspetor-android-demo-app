@@ -44,13 +44,9 @@ class SecondActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         when (requestCode) {
             12345 -> if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.i("INSPETOR", "Permission granted")
             } else {
-//                ActivityCompat.requestPermissions(
-//                    this, arrayOf<String>(
-//                        Manifest.permission.ACCESS_FINE_LOCATION,
-//                        Manifest.permission.ACCESS_COARSE_LOCATION
-//                    ), requestCode
-//                )
+                Log.i("INSPETOR", "Permission not granted")
             }
             else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
@@ -75,7 +71,6 @@ class SecondActivity : AppCompatActivity() {
                     ), requestCode
                 )
             } else {
-                Log.d("INSPETOR", "ESTOU AQUI")
             }
         }
     }
@@ -149,8 +144,8 @@ class SecondActivity : AppCompatActivity() {
 
         buttonAll.setOnClickListener {
             if (Inspetor.sharedInstance().isConfigured()){
-                for(position in 0..13) {
-                    when (arrayRequest[position]) {
+                for(i in arrayRequest.indices) {
+                    when (arrayRequest[i]) {
                         "Account Login" -> if (Inspetor.sharedInstance().isConfigured()) {
                             Inspetor.sharedInstance().trackLogin("email@email.com", "123")
                         }
