@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
-        Inspetor.sharedInstance().setup("inspetor.android", "9833200", true, false)
+        Inspetor.sharedInstance().setup("inspetor.demo", "58657", true, false)
 
         val intent = Intent(this, SecondActivity::class.java)
         startActivity(intent)

@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.OnLifecycleEvent
 import com.inspetor.Inspetor
+import android.util.Log
 
 class SecondActivity : AppCompatActivity() {
 
@@ -43,13 +44,9 @@ class SecondActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         when (requestCode) {
             12345 -> if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.i("INSPETOR", "Permission granted")
             } else {
-                ActivityCompat.requestPermissions(
-                    this, arrayOf<String>(
-                        Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.ACCESS_COARSE_LOCATION
-                    ), requestCode
-                )
+                Log.i("INSPETOR", "Permission not granted")
             }
             else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
@@ -74,7 +71,6 @@ class SecondActivity : AppCompatActivity() {
                     ), requestCode
                 )
             } else {
-
             }
         }
     }
@@ -137,7 +133,7 @@ class SecondActivity : AppCompatActivity() {
                         "Password Reset" -> if (Inspetor.sharedInstance().isConfigured()) {
                             Inspetor.sharedInstance().trackPasswordReset("email@email")
                         }
-                        "Screenview Track" -> if (Inspetor.sharedInstance().isConfigured()) {
+                        "Pageview Track" -> if (Inspetor.sharedInstance().isConfigured()) {
                             Inspetor.sharedInstance().trackPageView("Page Track")
                         }
                     }
@@ -148,8 +144,8 @@ class SecondActivity : AppCompatActivity() {
 
         buttonAll.setOnClickListener {
             if (Inspetor.sharedInstance().isConfigured()){
-                for(position in 0..13) {
-                    when (arrayRequest[position]) {
+                for(i in arrayRequest.indices) {
+                    when (arrayRequest[i]) {
                         "Account Login" -> if (Inspetor.sharedInstance().isConfigured()) {
                             Inspetor.sharedInstance().trackLogin("email@email.com", "123")
                         }
@@ -192,7 +188,7 @@ class SecondActivity : AppCompatActivity() {
                         "Password Reset" -> if (Inspetor.sharedInstance().isConfigured()) {
                             Inspetor.sharedInstance().trackPasswordReset("email@email")
                         }
-                        "Screenview Track" -> if (Inspetor.sharedInstance().isConfigured()) {
+                        "Pageview Track" -> if (Inspetor.sharedInstance().isConfigured()) {
                             Inspetor.sharedInstance().trackPageView("Page Track")
                         }
                     }
