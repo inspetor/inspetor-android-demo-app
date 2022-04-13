@@ -3,36 +3,27 @@ package com.android.inspetortest
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.OnLifecycleEvent
-import com.inspetor.Inspetor
-import android.util.Log
+import com.legiti.Legiti
 
 class SecondActivity : AppCompatActivity() {
 
     var arrayRequest: ArrayList<String> = arrayListOf(
-        "Account Login",
-        "Account Logout",
-        "Account Creation",
-        "Account Update",
-        "Account Deletion",
-        "Event Creation",
-        "Event Update",
-        "Event Deletion",
-        "Transfer Creation",
-        "Transfer Update",
-        "Sale Creation",
-        "Sale Update",
+        "Login",
+        "Logout",
+        "User Creation",
+        "User Update",
         "Password Recovery",
-        "Password Reset",
         "Pageview Track"
     )
 
@@ -44,9 +35,9 @@ class SecondActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         when (requestCode) {
             12345 -> if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.i("INSPETOR", "Permission granted")
+                Log.i("Legiti", "Permission granted")
             } else {
-                Log.i("INSPETOR", "Permission not granted")
+                Log.i("Legiti", "Permission not granted")
             }
             else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
@@ -91,50 +82,17 @@ class SecondActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 button.setOnClickListener {
                     when (arrayRequest[position]) {
-                        "Account Login" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackLogin("email@email.com", "123")
+                        "Login" -> if (Legiti.sharedInstance().isConfigured()) {
+                            Legiti.sharedInstance().trackLogin("email@email.com", "123")
                         }
-                        "Account Logout" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackLogout("email@email.com", "")
+                        "Logout" -> if (Legiti.sharedInstance().isConfigured()) {
+                            Legiti.sharedInstance().trackLogout("email@email.com", "")
                         }
-                        "Account Creation" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackAccountCreation("123")
+                        "Password Recovery" -> if (Legiti.sharedInstance().isConfigured()) {
+                            Legiti.sharedInstance().trackPasswordRecovery("email@email")
                         }
-                        "Account Update" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackAccountUpdate("123")
-                        }
-                        "Account Deletion" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackAccountDeletion("123")
-                        }
-                        "Event Creation" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackEventCreation("123")
-                        }
-                        "Event Update" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackEventCreation("123")
-                        }
-                        "Event Deletion" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackEventDeletion("123")
-                        }
-                        "Transfer Creation" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackItemTransferCreation("123")
-                        }
-                        "Transfer Update" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackItemTransferUpdate("123")
-                        }
-                        "Sale Creation" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackSaleCreation("123")
-                        }
-                        "Sale Update" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackSaleUpdate("123")
-                        }
-                        "Password Recovery" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackPasswordRecovery("email@email")
-                        }
-                        "Password Reset" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackPasswordReset("email@email")
-                        }
-                        "Pageview Track" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackPageView("Page Track")
+                        "Pageview Track" -> if (Legiti.sharedInstance().isConfigured()) {
+                            Legiti.sharedInstance().trackPageView("Page Track")
                         }
                     }
                 }
@@ -143,53 +101,20 @@ class SecondActivity : AppCompatActivity() {
         }
 
         buttonAll.setOnClickListener {
-            if (Inspetor.sharedInstance().isConfigured()){
+            if (Legiti.sharedInstance().isConfigured()){
                 for(i in arrayRequest.indices) {
                     when (arrayRequest[i]) {
-                        "Account Login" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackLogin("email@email.com", "123")
+                        "Login" -> if (Legiti.sharedInstance().isConfigured()) {
+                            Legiti.sharedInstance().trackLogin("email@email.com", "123")
                         }
-                        "Account Logout" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackLogout("email@email.com", "")
+                        "Logout" -> if (Legiti.sharedInstance().isConfigured()) {
+                            Legiti.sharedInstance().trackLogout("email@email.com", "")
                         }
-                        "Account Creation" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackAccountCreation("123")
+                        "Password Recovery" -> if (Legiti.sharedInstance().isConfigured()) {
+                            Legiti.sharedInstance().trackPasswordRecovery("email@email")
                         }
-                        "Account Update" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackAccountUpdate("123")
-                        }
-                        "Account Deletion" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackAccountDeletion("123")
-                        }
-                        "Event Creation" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackEventCreation("123")
-                        }
-                        "Event Update" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackEventCreation("123")
-                        }
-                        "Event Deletion" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackEventDeletion("123")
-                        }
-                        "Transfer Creation" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackItemTransferCreation("123")
-                        }
-                        "Transfer Update" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackItemTransferUpdate("123")
-                        }
-                        "Sale Creation" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackSaleCreation("123")
-                        }
-                        "Sale Update" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackSaleUpdate("123")
-                        }
-                        "Password Recovery" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackPasswordRecovery("email@email")
-                        }
-                        "Password Reset" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackPasswordReset("email@email")
-                        }
-                        "Pageview Track" -> if (Inspetor.sharedInstance().isConfigured()) {
-                            Inspetor.sharedInstance().trackPageView("Page Track")
+                        "Pageview Track" -> if (Legiti.sharedInstance().isConfigured()) {
+                            Legiti.sharedInstance().trackPageView("Page Track")
                         }
                     }
                 }
